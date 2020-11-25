@@ -1,0 +1,21 @@
+version: "3.8"
+services:
+  mysql:
+    image: mysql:latest
+    container_name: transfer-db
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=transfer
+      - MYSQL_DATABASE=transfer
+      - MYSQL_USER=transfer
+      - MYSQL_PASSWORD=transfer
+  php:
+    image: ambientum/php:latest-nginx
+    container_name: transfer-api
+    volumes:
+      - .:/var/www/app
+    ports:
+      - 8000:8080
+    links:
+      - mysql

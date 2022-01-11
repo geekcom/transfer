@@ -116,10 +116,10 @@ final class UserRepository implements UserRepositoryContract
 
     /**
      * @param array $data
-     * @return bool
+     * @return void
      * @throws Exception
      */
-    private function subtractValueFromPayerWallet(array $data): bool
+    private function subtractValueFromPayerWallet(array $data): void
     {
         $payer = $this->findUserById($data['payer']);
 
@@ -142,15 +142,15 @@ final class UserRepository implements UserRepositoryContract
         $payer->user_wallet = $payerSubtotal->getAmount();
         $this->notificationUserApiService->notify();
 
-        return $payer->save();
+        $payer->save();
     }
 
     /**
      * @param array $data
-     * @return bool
+     * @return void
      * @throws Exception
      */
-    private function addValueToPayeeWallet(array $data): bool
+    private function addValueToPayeeWallet(array $data): void
     {
         $valueToTransfer = Money::parse($data['value'], 'BRL');
         $payee = $this->findUserById($data['payee']);
@@ -163,7 +163,7 @@ final class UserRepository implements UserRepositoryContract
         $payeeSubtotal = $valueToTransfer->add($payeeWallet);
         $payee->user_wallet = $payeeSubtotal->getAmount();
 
-        return $payee->save();
+        $payee->save();
     }
 
     /**

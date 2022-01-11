@@ -18,10 +18,10 @@ MySQL 8, PHP 7.4, Laravel 8.
 ## Requirements to local run
 
 * Docker;
-* Docker Compose.
+* Docker Compose;
 * External API services to:
     * Authorize transfers: `CONSULT_EXTERNAL_API_SERVICE`;
-    * Notify users about transfers: `NOTIFICATION_USER_API_SERVICE`'
+    * Notify users about transfers: `NOTIFICATION_USER_API_SERVICE`'.
 
 ## Installation
 
@@ -29,12 +29,13 @@ MySQL 8, PHP 7.4, Laravel 8.
 * In your terminal run: `docker-compose up -d`;
 * Rename `.env.example` to `.env`
 * In your terminal execute the commands:
+    * `docker exec -it transfer-api composer install`
     * `docker exec -it transfer-api php artisan key:generate`
     * `docker exec -it transfer-api php artisan migrate:fresh --seed`
 
 ## Test
 
-Just run `composer test`
+Just run `docker exec -it transfer-api composer test`
 
 ## How to execute
 
@@ -78,6 +79,3 @@ http://localhost:8000/api/v1/users/{userId}
 - [ ] GitHub Actions;
 - [ ] New endpoints;
 - [ ] ......
-
-
-

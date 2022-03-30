@@ -17,5 +17,5 @@ services:
       - .:/var/www/app
     ports:
       - "8000:8080"
-    links:
+    depends_on:
       - mysql

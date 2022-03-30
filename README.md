@@ -13,7 +13,7 @@ A simple RESTful API to send and receive money
 
 ## Stack
 
-MySQL 8, PHP 7.4, Laravel 8.
+MySQL 8, PHP 8, Laravel 9.
 
 ## Requirements to local run
 

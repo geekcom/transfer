@@ -6,7 +6,8 @@ use Tests\TestCase;
 
 class TransferMoneyTest extends TestCase
 {
-    public function testTransferMoneyWithFakePayer()
+    /** @test  **/
+    public function transferMoneyWithFakePayer()
     {
         $data = [
             'value' => '1.00',
